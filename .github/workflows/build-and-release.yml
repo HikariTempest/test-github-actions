@@ -22,5 +22,5 @@ jobs:
 
       - name: Release build
         run: |
-          a=${date +"%Y-%m-%d"}-${{ github.sha }}
+          a=$(date +"%Y-%m-%d")-${{ github.sha }}
           gh release create $a --title "franklyn $a" --generate-notes ./dist/*.jar  
