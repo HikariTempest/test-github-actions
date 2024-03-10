@@ -29,8 +29,7 @@ jobs:
 
       - name: Release the build
         run: |
-          tag="$(date +"%Y.%m.%d")-(git rev-parse --short HEAD)"
+          tag="$(date +"%Y.%m.%d")-$(git rev-parse --short HEAD)"
           gh release create $tag ./dist/*-runner --title "franklyn $tag" --notes-file release-notes.txt --prerelease
-          git tag --sort=refname
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
