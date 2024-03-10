@@ -22,8 +22,6 @@ jobs:
           chmod +x ./cicd/build.sh
           ./cicd/build.sh
 
-      - run: ll
-
       - name: Release build
         run: |
           a=$(date +"%Y-%m-%d")-${{ github.sha }}

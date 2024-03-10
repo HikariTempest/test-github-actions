@@ -6,6 +6,6 @@ pushd test-app
 popd
 
 mkdir -p dist
-cp backend/target/*-runner.jar dist/backend.jar
+cp backend/target/*-SNAPSHOT.jar dist/backend.jar
 ls -l dist
 
