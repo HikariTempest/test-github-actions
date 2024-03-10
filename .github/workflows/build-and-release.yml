@@ -25,6 +25,6 @@ jobs:
       - name: Release the build
         run: |
           a="$(date +"%Y-%m-%d")-${{ github.sha }}"
-          gh release create $a --title "franklyn $a" --generate-notes ./dist/*.jar
+          gh release create $a ./dist/*.jar --title "franklyn $a" --generate-notes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
