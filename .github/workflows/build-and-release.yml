@@ -24,7 +24,7 @@ jobs:
 
       - name: Release the build
         run: |
-          chmod +x ./cicd/release.sh
-          ./cicd/release.sh
+          a="$(date +"%Y-%m-%d")-${{ github.sha }}"
+          gh release create $a --title "franklyn $a" --generate-notes ./dist/*.jar
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
