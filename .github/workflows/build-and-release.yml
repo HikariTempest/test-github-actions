@@ -22,7 +22,7 @@ jobs:
           chmod +x ./cicd/build.sh
           ./cicd/build.sh
 
-      - run: ls ./dist/
+      - run: ll
 
       - name: Release build
         run: |
