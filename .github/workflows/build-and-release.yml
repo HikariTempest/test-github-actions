@@ -22,9 +22,10 @@ jobs:
           chmod +x ./cicd/build.sh
           ./cicd/build.sh
 
-      - run: |
+      - name: Get the git commits since the last tag
+        run: |
           git pull --unshallow
-          git log $(git describe --tags --abbrev=0)..HEAD | git shortlog > release-notes.txt
+          echo "```$(git log $(git describe --tags --abbrev=0)..HEAD | git shortlog)```" > release-notes.txt
           cat release-notes.txt
 
       - name: Release the build
