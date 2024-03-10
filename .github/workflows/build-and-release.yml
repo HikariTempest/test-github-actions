@@ -24,12 +24,12 @@ jobs:
 
       - run: |
           git pull --unshallow
-          echo "$(git log $(git describe --tags --abbrev=0)..HEAD)"
+          git log $(git describe --tags --abbrev=0)..HEAD | git shortlog > release-notes.txt
+          cat release-notes.txt
 
       - name: Release the build
         run: |
           tag="$(date +"%Y.%m.%d")-(git rev-parse --short HEAD)"
-          git log $(git describe --tags --abbrev=0)..HEAD > release-notes.txt
           gh release create $tag ./dist/*-runner --title "franklyn $tag" --notes-file release-notes.txt --prerelease
           git tag --sort=refname
         env:
