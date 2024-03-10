@@ -17,15 +17,12 @@ jobs:
 
       - run: java --version
 
-      - name: Build with Maven
+      - name: Build with Maven and release
         run: |
           chmod +x ./cicd/build.sh
           ./cicd/build.sh
-
-      - name: Release the build
-        run: |
+          
           a="$(date +"%Y-%m-%d")-${{ github.sha }}"
-          ls ./dist/*.jar
           gh release create $a ./dist/*.jar --title "franklyn $a" --generate-notes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
