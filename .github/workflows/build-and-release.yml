@@ -22,10 +22,11 @@ jobs:
           chmod +x ./cicd/build.sh
           ./cicd/build.sh
 
+      - run: [ -d "./dist/" ] && echo "Directory ./dist/ exists."
+
       - name: Release build
         run: |
           a=$(date +"%Y-%m-%d")-${{ github.sha }}
-          [ -d "./dist/" ] && echo "Directory ./dist/ exists."
           gh release create $a --title "franklyn $a" --generate-notes ./dist/*.jar
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
