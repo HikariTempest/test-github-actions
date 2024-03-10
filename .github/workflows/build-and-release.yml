@@ -24,7 +24,9 @@ jobs:
 
       - name: Release the build
         run: |
-          a="$(date +"%Y-%m-%d")-${{ github.sha }}"
-          gh release create $a ./dist/*.jar --title "franklyn $a" --generate-notes
+          tag="$(date +"%Y.%m.%d")-${{ github.sha }}"
+          git shortlog --since=2024-03-10T00:00 > release-notes.txt
+          gh release create $tag ./dist/*-runner --title "franklyn $tag" --notes-file release-notes.txt --prerelease
+          git tag --sort=refname
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
