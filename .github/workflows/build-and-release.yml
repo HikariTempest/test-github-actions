@@ -22,7 +22,8 @@ jobs:
           chmod +x ./cicd/build.sh
           ./cicd/build.sh
 
-      - run: echo $(git shortlog)
+      - run: echo "$(git shortlog)"
+      - run: echo "hello"
 
       - name: Release the build
         run: |
