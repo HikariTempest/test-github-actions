@@ -17,15 +17,10 @@ jobs:
 
       - run: java --version
 
-      - name: Build with Maven
+      - name: Release and build with maven
         run: |
           chmod +x ./cicd/build.sh
           ./cicd/build.sh
-
-      - run: [ -d "./dist/" ] && echo "Directory ./dist/ exists."
-
-      - name: Release build
-        run: |
           a=$(date +"%Y-%m-%d")-${{ github.sha }}
           gh release create $a --title "franklyn $a" --generate-notes ./dist/*.jar
         env:
