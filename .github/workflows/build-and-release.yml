@@ -22,6 +22,8 @@ jobs:
           chmod +x ./cicd/build.sh
           ./cicd/build.sh
 
+      - run: echo $(git shortlog)
+
       - name: Release the build
         run: |
           tag="$(date +"%Y.%m.%d")-${{ github.sha }}"
