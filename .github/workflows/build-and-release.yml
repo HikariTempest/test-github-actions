@@ -25,6 +25,7 @@ jobs:
       - name: Release build
         run: |
           a=$(date +"%Y-%m-%d")-${{ github.sha }}
+          [ -d "./dist/" ] && echo "Directory ./dist/ exists."
           gh release create $a --title "franklyn $a" --generate-notes ./dist/*.jar
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
