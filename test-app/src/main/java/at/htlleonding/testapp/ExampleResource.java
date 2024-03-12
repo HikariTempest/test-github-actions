@@ -18,6 +18,6 @@ public class ExampleResource {
     @Path("/2")
     @Produces(MediaType.TEXT_PLAIN)
     public String hello2() {
-        return "Hello from RESTEasy Reactive 2";
+        return "Hello 2";
     }
 }
