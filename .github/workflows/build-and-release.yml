@@ -3,6 +3,9 @@ run-name: ${{ github.actor }} is releasing the newest version.
 on:
   push:
     branches: [main]
+    paths:
+      - 'test-app/*'
+      - 'something/*'
 jobs:
   build-and-release:
     runs-on: ubuntu-22.04
